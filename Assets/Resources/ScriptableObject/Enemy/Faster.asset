@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74169fb9686847f18d5bad4d67d4ae79, type: 3}
-  m_Name: Armored
+  m_Name: Faster
   m_EditorClassIdentifier: 
-  health: 50
-  speed: 2
-  reward: 30
-  chanceToSpawn: 0.1
+  health: 10
+  speed: 4
+  reward: 12
+  chanceToSpawn: 0.3
+  skin: {fileID: 957373031275240419, guid: acf09082f029b234cb2e90bebfeb8692, type: 3}

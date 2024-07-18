@@ -9,38 +9,43 @@
       <e p="Assembly-CSharp.Player.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="Constants.cs" t="Include" />
           <e p="Enemy" t="Include">
             <e p="Enemy.cs" t="Include" />
             <e p="EnemyMovement.cs" t="Include" />
             <e p="Health.cs" t="Include" />
           </e>
-          <e p="EventBus.cs" t="Include" />
           <e p="EventManager.cs" t="Include" />
           <e p="MoveCamera.cs" t="Include" />
           <e p="Player" t="Include">
             <e p="Player.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
             <e p="Weapon" t="Include">
-              <e p="AbstractWeaponBehavior.cs" t="Include" />
-              <e p="AssaultRifleBehavior.cs" t="Include" />
+              <e p="Behavior" t="Include">
+                <e p="AbstractWeaponBehavior.cs" t="Include" />
+                <e p="AssaultRifleBehavior.cs" t="Include" />
+                <e p="DefaultWeaponBehavior.cs" t="Include" />
+                <e p="GrenadeLauncherBehavior.cs" t="Include" />
+                <e p="PistolBehavior.cs" t="Include" />
+                <e p="ShotgunBehavior.cs" t="Include" />
+              </e>
               <e p="Bullet" t="Include">
                 <e p="BaseBullet.cs" t="Include" />
                 <e p="Bullet.cs" t="Include" />
                 <e p="GrenadeBullet.cs" t="Include" />
               </e>
-              <e p="DefaultWeaponBehavior.cs" t="Include" />
-              <e p="GrenadeLauncherBehavior.cs" t="Include" />
               <e p="Interface" t="Include">
                 <e p="IWeaponBehavior.cs" t="Include" />
               </e>
-              <e p="PistolBehavior.cs" t="Include" />
-              <e p="ShotgunBehavior.cs" t="Include" />
               <e p="Weapon.cs" t="Include" />
             </e>
           </e>
           <e p="ScriptableObject" t="Include">
             <e p="EnemyStats.cs" t="Include" />
             <e p="WeaponStats.cs" t="Include" />
+          </e>
+          <e p="Spawners" t="Include">
+            <e p="SpawnEnemy.cs" t="Include" />
           </e>
         </e>
       </e>

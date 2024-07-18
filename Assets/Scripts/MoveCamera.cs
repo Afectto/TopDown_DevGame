@@ -11,8 +11,12 @@ public class MoveCamera : MonoBehaviour
 
     void Start()
     {
-        _maxLimits = new Vector2(3.68f, 7.32f);
-        _minLimits = new Vector2( -3.68f, -7.32f);
+        float cameraHeight = Constants.GetCameraHeight();
+        float cameraWidth = Constants.GetCameraWight();
+        
+        _maxLimits = Constants.MaxLimitsArena - new Vector2(cameraWidth, cameraHeight);
+        _minLimits =  Constants.MinLimitsArena + new Vector2(cameraWidth, cameraHeight);
+        
         _player = FindFirstObjectByType<Player>().transform;
         _offset = transform.position - _player.position;
     }

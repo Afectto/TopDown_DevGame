@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        _maxLimits = new Vector2(20, 15);
-        _minLimits = new Vector2( -20, -15);
+        _maxLimits = Constants.MaxLimitsArena;
+        _minLimits = Constants.MinLimitsArena;
     }
 
     void Update()

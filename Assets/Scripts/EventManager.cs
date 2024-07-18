@@ -16,6 +16,4 @@ public class EventManager : MonoBehaviour
             Instance = this;
         }
     }
-    
-    
 }

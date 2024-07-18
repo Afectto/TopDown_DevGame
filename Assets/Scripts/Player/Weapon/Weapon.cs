@@ -12,26 +12,32 @@ public class Weapon : MonoBehaviour, ILisener
     private float _shotPerSecond;
     private WeaponType _weaponType;
     private Transform _playerPosition;
-    
+
     private void Start()
     {
+        AddAllListeners();
         ChangeWeapon(baseWeaponStats);
         _playerPosition = FindFirstObjectByType<Player>().transform;
+        StartCoroutine(ShootRoutine());
     }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(ShootRoutine());
         }
     }
 
     private IEnumerator ShootRoutine()
     {
-        while (Input.GetMouseButton(0))
+        while (true)
         {
-            weaponBehavior?.Shoot(firePoint.position - _playerPosition.position);
-            yield return new WaitForSeconds(1/_shotPerSecond);
+            if (Input.GetMouseButton(0))
+            {
+                weaponBehavior?.Shoot(firePoint.position - _playerPosition.position);
+                yield return new WaitForSeconds(1/_shotPerSecond);
+            }
+
+            yield return null;
         }
         // ReSharper disable once IteratorNeverReturns
     }
@@ -41,19 +47,16 @@ public class Weapon : MonoBehaviour, ILisener
         return _weaponType;
     }
     
-    private void OnEnable()
-    {
-        AddAllListeners();
-    }
 
     public void AddAllListeners()
     {
-        // EventManager.Instance.OnChangeWeapon += ChangeWeapon;
+        EventManager.Instance.OnChangeWeapon += ChangeWeapon;
     }
 
     public void RemoveAllListeners()
     {
-        // EventManager.Instance.OnChangeWeapon -= ChangeWeapon;
+        // ReSharper disable once DelegateSubtraction
+        EventManager.Instance.OnChangeWeapon -= ChangeWeapon;
     }
 
     private void ChangeWeapon(WeaponStats weaponStats)

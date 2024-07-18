@@ -1,17 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public abstract class Bullet : MonoBehaviour
 {
-    private Vector3 _moveDirection;
-    protected float _damage;
     public float speed = 7f;
+    
+    protected float Damage;
+    
+    private Vector3 _moveDirection;
     
     public void SetDamage(float damage)
     {
-        _damage = damage;
+        Damage = damage;
     }
 
     public void SetDirection(Vector3 moveDirection)
@@ -27,13 +27,17 @@ public abstract class Bullet : MonoBehaviour
     void MoveForward()
     {
         transform.position += _moveDirection * speed * Time.deltaTime;
+        if (!Constants.IsPositionInsideRectangle(transform.position))
+        {
+            Destroy(gameObject);
+        }
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
-            EventManager.Instance.OnDamageTaken.Invoke(other.gameObject, _damage);
+            EventManager.Instance.OnDamageTaken.Invoke(other.gameObject, Damage);
         }
     }
 }

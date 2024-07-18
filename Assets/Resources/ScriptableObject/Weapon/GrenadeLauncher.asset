@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74169fb9686847f18d5bad4d67d4ae79, type: 3}
-  m_Name: Soldier
+  m_Script: {fileID: 11500000, guid: 70b78fb5cbbd3454d9ac45105282c1da, type: 3}
+  m_Name: GrenadeLauncher
   m_EditorClassIdentifier: 
-  health: 10
-  speed: 3
-  reward: 7
-  chanceToSpawn: 0.6
+  damage: 10
+  shotPerSecond: 0.66
+  type: 4
+  _bulletPrefab: {fileID: 8918444469978908921, guid: b9fc11261f2efda41afda87508bfc7c7, type: 3}

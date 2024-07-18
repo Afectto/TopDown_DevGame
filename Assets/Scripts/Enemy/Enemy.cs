@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, ILisener
 {
+    [SerializeField]private SpriteRenderer _skin;
     private Health _health;
     private EnemyMovement _enemyMovement;
 
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour, ILisener
     {
         _health.SetMaxHeath(stats.Health);
         _enemyMovement.SetSpeed(stats.Speed);
+        _skin.color = stats.Skin.color;
     }
 
     private void OnEnable()

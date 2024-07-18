@@ -39,13 +39,11 @@ public class GrenadeBullet : Bullet
         {
             if (collider.CompareTag("Enemy"))
             {
-                EventManager.Instance.OnDamageTaken.Invoke(collider.gameObject, _damage);
+                EventManager.Instance.OnDamageTaken.Invoke(collider.gameObject, Damage);
             }
         }
         
         Destroy(gameObject);
     }
-    protected override void OnTriggerEnter2D(Collider2D other)
-    {
-    }
+    
 }
