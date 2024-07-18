@@ -8,8 +8,10 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.Player.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Editor" t="Include">
+          <e p="VoidZoneStats_Editor.cs" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
-          <e p="Constants.cs" t="Include" />
           <e p="Enemy" t="Include">
             <e p="Enemy.cs" t="Include" />
             <e p="EnemyMovement.cs" t="Include" />
@@ -42,10 +44,24 @@
           </e>
           <e p="ScriptableObject" t="Include">
             <e p="EnemyStats.cs" t="Include" />
+            <e p="VoidZoneStats.cs" t="Include" />
             <e p="WeaponStats.cs" t="Include" />
           </e>
           <e p="Spawners" t="Include">
             <e p="SpawnEnemy.cs" t="Include" />
+            <e p="SpawnVoidZone.cs" t="Include" />
+          </e>
+          <e p="Utils.cs" t="Include" />
+          <e p="VoidZone" t="Include">
+            <e p="Behavior" t="Include">
+              <e p="DeadVoidZoneBehavior.cs" t="Include" />
+              <e p="SlowVoidZoneBehavior.cs" t="Include" />
+            </e>
+            <e p="Interface" t="Include">
+              <e p="IVoidZoneBehavior.cs" t="Include" />
+            </e>
+            <e p="VoidZone.cs" t="Include" />
+            <e p="VoidZoneType.cs" t="Include" />
           </e>
         </e>
       </e>

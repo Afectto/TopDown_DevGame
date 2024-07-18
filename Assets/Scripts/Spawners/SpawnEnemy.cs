@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,11 +39,32 @@ public class SpawnEnemy : MonoBehaviour
     private void SpawnRandomEnemy()
     {        
         var randomEnemyIndex = Random.Range(0, _enemyStates.Count);
-        Vector2 spawnPosition = Constants.GetRandomPositionOutsideCameraButInArea();
+        Vector2 spawnPosition = GetRandomPositionOutsideCameraButInArea();
 
         CreateEnemy(spawnPosition, randomEnemyIndex);
     }
     
+    private Vector2 GetRandomPositionOutsideCameraButInArea()
+    {
+        Camera mainCamera = Camera.main;
+        float offset = 0.5f;
+        float cameraHeight = Utils.GetCameraHeight();
+        float cameraWidth = Utils.GetCameraWight();
+
+        var position = mainCamera.transform.position;
+        var topRightCameraPoint = position + new Vector3(cameraWidth + offset,cameraHeight + offset);
+        var leftDownCameraPoint = position + new Vector3(-cameraWidth - offset, -cameraHeight - offset);
+        
+        Vector2 point = Utils.GetRandomPointInArea();
+        
+        while (Utils.IsPositionInsideRectangle(point, leftDownCameraPoint,topRightCameraPoint))
+        {
+            point = Utils.GetRandomPointInArea();
+        }
+
+        return point;
+    }
+
     private void CreateEnemy(Vector2 position, int index)
     {        
         var enemy = Instantiate(enemyPrefab, position, Quaternion.identity);

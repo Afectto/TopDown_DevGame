@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;
+    [SerializeField]private float speed = 5f;
+    private float _baseSpeed;
     private Vector2 _maxLimits;
     private Vector2 _minLimits;
     
@@ -10,8 +11,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        _maxLimits = Constants.MaxLimitsArena;
-        _minLimits = Constants.MinLimitsArena;
+        _baseSpeed = speed;
+        _maxLimits = Utils.MaxLimitsArena;
+        _minLimits = Utils.MinLimitsArena;
+    }
+
+    private void Start()
+    {
+        EventManager.Instance.OnEnterSlowZone += Slow;
+        EventManager.Instance.OnExitSlowZone += Normal;
+    }
+
+    private void Normal()
+    {
+        speed = _baseSpeed;
+    }
+
+    private void Slow(float value)
+    {
+        speed *= value;
     }
 
     void Update()
@@ -46,5 +64,11 @@ public class PlayerMovement : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.OnEnterSlowZone -= Slow;
+        EventManager.Instance.OnExitSlowZone -= Normal;
     }
 }

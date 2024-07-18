@@ -27,7 +27,7 @@ public abstract class Bullet : MonoBehaviour
     void MoveForward()
     {
         transform.position += _moveDirection * speed * Time.deltaTime;
-        if (!Constants.IsPositionInsideRectangle(transform.position))
+        if (!Utils.IsPositionInsideRectangle(transform.position))
         {
             Destroy(gameObject);
         }
@@ -37,7 +37,7 @@ public abstract class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            EventManager.Instance.OnDamageTaken.Invoke(other.gameObject, Damage);
+            EventManager.Instance.OnDamageTaken?.Invoke(other.gameObject, Damage);
         }
     }
 }

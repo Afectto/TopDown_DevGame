@@ -8,6 +8,11 @@ public class EventManager : MonoBehaviour
     public Action<GameObject, float> OnDamageTaken;
 
     public Action<WeaponStats> OnChangeWeapon;
+
+    public Action OnEnterDeadZone;
+    
+    public Action<float> OnEnterSlowZone;
+    public Action OnExitSlowZone;
     
     private void Awake()
     {

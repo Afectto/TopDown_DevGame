@@ -1,23 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GrenadeBullet : Bullet
 {
-    private Vector3 targetPosition;
-    private float explosionRadius = 5f;
+    [SerializeField]private float explosionRadius = 5f;
+    private Vector3 _targetPosition;
 
     public void SetTargetPosition(Vector3 target)
     {
-        targetPosition = target;
+        _targetPosition = target;
     }
 
     public override void Update()
     {
-        if (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+        if (Vector3.Distance(transform.position, _targetPosition) > 0.1f)
         {
-            MoveTowardsTarget(targetPosition);
+            MoveTowardsTarget(_targetPosition);
         }
         else
         {
@@ -39,7 +36,7 @@ public class GrenadeBullet : Bullet
         {
             if (collider.CompareTag("Enemy"))
             {
-                EventManager.Instance.OnDamageTaken.Invoke(collider.gameObject, Damage);
+                EventManager.Instance.OnDamageTaken?.Invoke(collider.gameObject, Damage);
             }
         }
         
