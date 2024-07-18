@@ -31,8 +31,10 @@ public class PlayerMovement : MonoBehaviour
         newPos.y = Mathf.Clamp(newPos.y, _minLimits.y, _maxLimits.y);
 
         transform.position = newPos;
-        
-        Rotation();
+        if (Input.GetMouseButton(0))
+        {
+            Rotation();
+        }
     }
 
     private void Rotation()
