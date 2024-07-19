@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer skin;
     private PlayerMovement _playerMovement;
     private bool _isInvulnerability;
     
@@ -14,17 +15,20 @@ public class Player : MonoBehaviour
 
     public void IncreaseSpeed(float speed)
     {
+        skin.color = Color.yellow;
         _playerMovement.AddMultiplier(speed);
     }
     
     public void DecreaseSpeed(float speed)
     {
+        skin.color = Color.white;
         _playerMovement.RemoveMultiplier(speed);
     }
 
     public void ChangeInvulnerability(bool value)
     {
         _isInvulnerability = value;
+        skin.color = value ? Color.green : Color.white;
     }
     
     private void OnTriggerStay2D(Collider2D other)
