@@ -23,15 +23,15 @@ public class SpawnVoidZone : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            for (int i = 0; i < _voidZones.Count; i++)
-            {
-                Destroy(_voidZones[i].gameObject);
-            }
-            _voidZones.Clear();
-            SpawnAllZone();
-        } //DEBUG
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     for (int i = 0; i < _voidZones.Count; i++)
+        //     {
+        //         Destroy(_voidZones[i].gameObject);
+        //     }
+        //     _voidZones.Clear();
+        //     SpawnAllZone();
+        // } //DEBUG
     }
 
     private void SpawnAllZone()
