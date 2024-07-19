@@ -15,4 +15,4 @@ MonoBehaviour:
   damage: 2
   shotPerSecond: 1.5
   type: 3
-  _bulletPrefab: {fileID: 5666747599738819604, guid: 395e6c2239fc0044daeba832ea208d11, type: 3}
+  _bulletPrefab: {fileID: 1322873374700109110, guid: 047c70326ac6a2f4f9c6399af0a4c5b9, type: 3}
