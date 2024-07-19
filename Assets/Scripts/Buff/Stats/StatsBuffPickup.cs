@@ -1,6 +1,3 @@
-using System.Collections;
-using UnityEngine;
-
 public class StatsBuffPickup : PickupBuff
 {    
     public override void Initialize(IStats stats)

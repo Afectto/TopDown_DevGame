@@ -23,9 +23,8 @@ public class GrenadeBullet : Bullet
     }
 
     void MoveTowardsTarget(Vector3 target)
-    {
-        Vector3 moveDirection = (target - transform.position).normalized * speed * Time.deltaTime;
-        transform.position += moveDirection;
+    { 
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
     void Explode()

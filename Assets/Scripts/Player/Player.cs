@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
 
     private void Dead()
     {
+        EventManager.Instance.OnDeadPlayer?.Invoke();
         Destroy(gameObject);
     }
 

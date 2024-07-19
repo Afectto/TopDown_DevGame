@@ -18,7 +18,7 @@ public class SpawnStatBuff : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(27);
 
             int randomIndex = Random.Range(0, _buffStates.Count);
                 

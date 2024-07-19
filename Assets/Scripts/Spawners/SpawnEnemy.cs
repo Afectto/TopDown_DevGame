@@ -13,6 +13,8 @@ public class SpawnEnemy : MonoBehaviour
     private void Awake()
     {
         _enemyStates = Resources.LoadAll<EnemyStats>("ScriptableObject/Enemy").ToList();
+        _enemyStates.Sort((enemy1, enemy2) => enemy1.ChanceToSpawn.CompareTo(enemy2.ChanceToSpawn));
+        
         StartCoroutine(DecreaseSpawnDelay());
         StartCoroutine(Spawn());
     }
@@ -38,10 +40,9 @@ public class SpawnEnemy : MonoBehaviour
 
     private void SpawnRandomEnemy()
     {        
-        var randomEnemyIndex = Random.Range(0, _enemyStates.Count);
         Vector2 spawnPosition = GetRandomPositionOutsideCameraButInArea();
 
-        CreateEnemy(spawnPosition, randomEnemyIndex);
+        CreateEnemy(spawnPosition);
     }
     
     private Vector2 GetRandomPositionOutsideCameraButInArea()
@@ -65,9 +66,21 @@ public class SpawnEnemy : MonoBehaviour
         return point;
     }
 
-    private void CreateEnemy(Vector2 position, int index)
-    {        
-        var enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
-        enemy.Initialize(_enemyStates[index]);
+    private void CreateEnemy(Vector2 position)
+    {
+        float totalChance = 0f;
+        float randomValue = Random.value;
+
+        foreach (var enemyStats in _enemyStates)
+        {
+            totalChance += enemyStats.ChanceToSpawn;
+
+            if (randomValue <= totalChance)
+            {
+                var enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
+                enemy.Initialize(enemyStats);
+                return;
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour, ILisener
     [SerializeField]private SpriteRenderer _skin;
     private Health _health;
     private EnemyMovement _enemyMovement;
+    private float _reward;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour, ILisener
         _health.SetMaxHeath(stats.Health);
         _enemyMovement.SetSpeed(stats.Speed);
         _skin.color = stats.Skin.color;
+        _reward = stats.Reward;
     }
 
     private void OnEnable()
@@ -27,6 +29,7 @@ public class Enemy : MonoBehaviour, ILisener
 
     private void OnDead()
     {
+        EventManager.Instance.OnDeadEnemy?.Invoke(_reward);
         Destroy(gameObject);
     }
     
@@ -39,6 +42,7 @@ public class Enemy : MonoBehaviour, ILisener
     {
         _health.OnDead -= OnDead;
     }
+    
     private void OnDisable()
     {
         RemoveAllListeners();

@@ -16,6 +16,9 @@ public class EventManager : MonoBehaviour
 
     public Action<BuffStats> OnPickupBuff;
     
+    public Action<float> OnDeadEnemy;
+    public Action OnDeadPlayer;
+
     private void Awake()
     {
         if (!Instance)
