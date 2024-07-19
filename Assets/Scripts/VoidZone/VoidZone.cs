@@ -15,6 +15,7 @@ public class VoidZone : MonoBehaviour
         _collider.radius = stats.Radius;
         skin.color = stats.Skin.color;
         skin.transform.localScale = Vector3.one * stats.Radius * 2f;
+        _radius = stats.Radius;
         SetBehavior(stats.Type, stats.Value);
     }
 
@@ -47,5 +48,10 @@ public class VoidZone : MonoBehaviour
         {
             _voidZoneBehavior.Remove();
         }
+    }
+
+    public float GetRadius()
+    {
+        return _radius;
     }
 }
