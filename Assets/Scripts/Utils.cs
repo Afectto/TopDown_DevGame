@@ -32,7 +32,20 @@ public static class Utils
         
         return new Vector2(x, y);
     }
-
+    
+    public static Vector2 GetRandomPositionInCamera()
+    {
+        float cameraHeight = GetCameraHeight();
+        float cameraWidth = GetCameraWight();
+        
+        Camera mainCamera = Camera.main;
+        
+        var positionCamera = mainCamera.transform.position;
+        var topRightCameraPoint = positionCamera + new Vector3(cameraWidth,cameraHeight);
+        var leftDownCameraPoint = positionCamera + new Vector3(-cameraWidth, -cameraHeight);
+        return GetRandomPointInArea(topRightCameraPoint, leftDownCameraPoint);
+    }
+    
     public static float GetCameraHeight()
     {
         Camera mainCamera = Camera.main;

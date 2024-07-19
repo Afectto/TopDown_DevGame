@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        if(!_playerTransform) return;
         transform.position = Vector3.MoveTowards(transform.position, _playerTransform.position, Time.deltaTime * _speed);
     }
 

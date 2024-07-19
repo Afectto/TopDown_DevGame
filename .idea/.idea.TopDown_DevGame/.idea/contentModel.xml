@@ -12,6 +12,11 @@
           <e p="VoidZoneStats_Editor.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
+          <e p="Buff" t="Include">
+            <e p="Weapon" t="Include">
+              <e p="WeaponPickupBuff.cs" t="Include" />
+            </e>
+          </e>
           <e p="Enemy" t="Include">
             <e p="Enemy.cs" t="Include" />
             <e p="EnemyMovement.cs" t="Include" />
@@ -50,6 +55,7 @@
           <e p="Spawners" t="Include">
             <e p="SpawnEnemy.cs" t="Include" />
             <e p="SpawnVoidZone.cs" t="Include" />
+            <e p="SpawnWeaponBuff.cs" t="Include" />
           </e>
           <e p="Utils.cs" t="Include" />
           <e p="VoidZone" t="Include">

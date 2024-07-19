@@ -23,6 +23,7 @@ public class MoveCamera : MonoBehaviour
 
     void LateUpdate()
     {
+        if(!_player) return;
         Vector3 targetPos = _player.position + _offset;
         targetPos.x = Mathf.Clamp(targetPos.x, _minLimits.x, _maxLimits.x);
         targetPos.y = Mathf.Clamp(targetPos.y, _minLimits.y, _maxLimits.y);

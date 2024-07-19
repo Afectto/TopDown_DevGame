@@ -29,7 +29,7 @@ public class Weapon : MonoBehaviour, ILisener
     {
         while (true)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0) && _playerPosition)
             {
                 weaponBehavior?.Shoot(firePoint.position - _playerPosition.position);
                 yield return new WaitForSeconds(1/_shotPerSecond);
@@ -45,7 +45,6 @@ public class Weapon : MonoBehaviour, ILisener
         return _weaponType;
     }
     
-
     public void AddAllListeners()
     {
         EventManager.Instance.OnChangeWeapon += ChangeWeapon;
