@@ -23,7 +23,7 @@ public class SpawnWeaponBuff : MonoBehaviour
             yield return new WaitForSeconds(10);
 
             int randomIndex = Random.Range(0, _weaponStats.Count);
-            while (_weaponStats[randomIndex].WeaponType == _weapon.GetCurrentWeaponType())
+            while (_weaponStats[randomIndex].WeaponType == _weapon.GetCurrentWeaponType() || _weaponStats[randomIndex].WeaponType == WeaponType.Base)
             {
                 randomIndex = Random.Range(0, _weaponStats.Count);
             }

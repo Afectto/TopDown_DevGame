@@ -1,28 +1,14 @@
-using System.Collections;
-using UnityEngine;
-
-public class WeaponPickupBuff : MonoBehaviour
+public class WeaponPickupBuff : PickupBuff
 {
-    private WeaponStats _stats;
-
-    public void Initialize(WeaponStats stats)
+    public override void Initialize(IStats stats)
     {
-        _stats = stats;
-        StartCoroutine(LifeTime());
+        base.Initialize(stats);
+        var currentStats = (WeaponStats) stats;
+        skin.color = currentStats.Skin.color;
     }
 
-    private IEnumerator LifeTime()
+    protected override void Invoke()
     {
-        yield return new WaitForSeconds(5);
-        Destroy(gameObject);
-    }
-    
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            EventManager.Instance.OnChangeWeapon?.Invoke(_stats);
-            Destroy(gameObject);
-        }
+        EventManager.Instance.OnChangeWeapon?.Invoke((WeaponStats)Stats);
     }
 }

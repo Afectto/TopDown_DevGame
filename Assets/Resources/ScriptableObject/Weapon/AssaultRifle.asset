@@ -16,3 +16,4 @@ MonoBehaviour:
   shotPerSecond: 10
   type: 2
   _bulletPrefab: {fileID: 5666747599738819604, guid: 395e6c2239fc0044daeba832ea208d11, type: 3}
+  skin: {fileID: 2626263742962053308, guid: b0f234084e23ff643a11f0ca9e142836, type: 3}

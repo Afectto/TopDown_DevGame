@@ -5,7 +5,7 @@ public class Weapon : MonoBehaviour, ILisener
 {
     [SerializeField] private Transform firePoint;
     [SerializeField] private WeaponStats baseWeaponStats;
-    private IWeaponBehavior weaponBehavior;
+    private IWeaponBehavior _weaponBehavior;
     private float _damage;
     private float _shotPerSecond;
     private WeaponType _weaponType;
@@ -18,20 +18,14 @@ public class Weapon : MonoBehaviour, ILisener
         _playerPosition = FindFirstObjectByType<Player>().transform;
         StartCoroutine(ShootRoutine());
     }
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-        }
-    }
-
+    
     private IEnumerator ShootRoutine()
     {
         while (true)
         {
             if (Input.GetMouseButton(0) && _playerPosition)
             {
-                weaponBehavior?.Shoot(firePoint.position - _playerPosition.position);
+                _weaponBehavior?.Shoot(firePoint.position - _playerPosition.position);
                 yield return new WaitForSeconds(1/_shotPerSecond);
             }
 
@@ -68,22 +62,22 @@ public class Weapon : MonoBehaviour, ILisener
         switch(weaponStats.WeaponType)
         {
             case WeaponType.Base:
-                weaponBehavior = new DefaultWeaponBehavior(weaponStats.Damage, firePoint, weaponStats.BulletPrefab);
+                _weaponBehavior = new DefaultWeaponBehavior(weaponStats.Damage, firePoint, weaponStats.BulletPrefab);
                 break;
             case WeaponType.Pistol:
-                weaponBehavior = new PistolBehavior(weaponStats.Damage, firePoint, weaponStats.BulletPrefab);
+                _weaponBehavior = new PistolBehavior(weaponStats.Damage, firePoint, weaponStats.BulletPrefab);
                 break;
             case WeaponType.AssaultRifle:
-                weaponBehavior = new AssaultRifleBehavior(weaponStats.Damage, firePoint, weaponStats.BulletPrefab);
+                _weaponBehavior = new AssaultRifleBehavior(weaponStats.Damage, firePoint, weaponStats.BulletPrefab);
                 break;
             case WeaponType.Shotgun:
-                weaponBehavior = new ShotgunBehavior(weaponStats.Damage, firePoint, weaponStats.BulletPrefab);
+                _weaponBehavior = new ShotgunBehavior(weaponStats.Damage, firePoint, weaponStats.BulletPrefab);
                 break;
             case WeaponType.GrenadeLauncher:
-                weaponBehavior = new GrenadeLauncherBehavior(weaponStats.Damage, firePoint, weaponStats.BulletPrefab);
+                _weaponBehavior = new GrenadeLauncherBehavior(weaponStats.Damage, firePoint, weaponStats.BulletPrefab);
                 break;
             default:
-                weaponBehavior = new DefaultWeaponBehavior(weaponStats.Damage, firePoint, weaponStats.BulletPrefab);
+                _weaponBehavior = new DefaultWeaponBehavior(weaponStats.Damage, firePoint, weaponStats.BulletPrefab);
                 break;
         }
     }

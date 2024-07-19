@@ -1,9 +1,9 @@
 TODO:
-Dead player,
-~~```Void Zone```~~,
+~~Dead player~~,
+~~Void Zone~~,
 ~~Spawn Enemy~~,
-Buff spawn and apply logic,
-Weapon spawn,
+~~Buff spawn and apply logic~~,
+~~Weapon spawn~~,
 Game Lose,
 Stats show,
 Save\Load Stats,

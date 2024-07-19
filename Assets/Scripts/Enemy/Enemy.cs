@@ -6,13 +6,10 @@ public class Enemy : MonoBehaviour, ILisener
     private Health _health;
     private EnemyMovement _enemyMovement;
 
-    private bool _isInvulnerability;
-    
     private void Awake()
     {
         _health = GetComponentInChildren<Health>();
         _enemyMovement = GetComponent<EnemyMovement>();
-        _isInvulnerability = false;
 
     }
 

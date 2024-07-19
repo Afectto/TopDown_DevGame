@@ -18,16 +18,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        EventManager.Instance.OnEnterSlowZone += Slow;
-        EventManager.Instance.OnExitSlowZone += Normal;
+        EventManager.Instance.OnEnterSlowZone += AddMultiplier;
+        EventManager.Instance.OnExitSlowZone += RemoveMultiplier;
     }
 
-    private void Normal()
+    public void RemoveMultiplier(float value)
     {
-        speed = _baseSpeed;
+        speed /= value;
     }
 
-    private void Slow(float value)
+    public void AddMultiplier(float value)
     {
         speed *= value;
     }
@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventManager.Instance.OnEnterSlowZone -= Slow;
-        EventManager.Instance.OnExitSlowZone -= Normal;
+        EventManager.Instance.OnEnterSlowZone -= AddMultiplier;
+        EventManager.Instance.OnExitSlowZone -= RemoveMultiplier;
     }
 }

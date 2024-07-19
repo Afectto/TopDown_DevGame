@@ -9,10 +9,22 @@
       <e p="Assembly-CSharp.Player.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Editor" t="Include">
+          <e p="BuffStats_Editor.cs" t="Include" />
           <e p="VoidZoneStats_Editor.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="Buff" t="Include">
+            <e p="Interface" t="Include">
+              <e p="IBuff.cs" t="Include" />
+              <e p="IBuffable.cs" t="Include" />
+            </e>
+            <e p="PickupBuff.cs" t="Include" />
+            <e p="Stats" t="Include">
+              <e p="BuffType.cs" t="Include" />
+              <e p="InvulnerabilityBuff.cs" t="Include" />
+              <e p="SpeedBuff.cs" t="Include" />
+              <e p="StatsBuffPickup.cs" t="Include" />
+            </e>
             <e p="Weapon" t="Include">
               <e p="WeaponPickupBuff.cs" t="Include" />
             </e>
@@ -26,6 +38,7 @@
           <e p="MoveCamera.cs" t="Include" />
           <e p="Player" t="Include">
             <e p="Player.cs" t="Include" />
+            <e p="PlayerBuffs.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
             <e p="Weapon" t="Include">
               <e p="Behavior" t="Include">
@@ -49,12 +62,14 @@
             </e>
           </e>
           <e p="ScriptableObject" t="Include">
+            <e p="BuffStats.cs" t="Include" />
             <e p="EnemyStats.cs" t="Include" />
             <e p="VoidZoneStats.cs" t="Include" />
             <e p="WeaponStats.cs" t="Include" />
           </e>
           <e p="Spawners" t="Include">
             <e p="SpawnEnemy.cs" t="Include" />
+            <e p="SpawnStatBuff.cs" t="Include" />
             <e p="SpawnVoidZone.cs" t="Include" />
             <e p="SpawnWeaponBuff.cs" t="Include" />
           </e>

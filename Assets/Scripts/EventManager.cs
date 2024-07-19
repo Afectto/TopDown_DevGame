@@ -12,7 +12,9 @@ public class EventManager : MonoBehaviour
     public Action OnEnterDeadZone;
     
     public Action<float> OnEnterSlowZone;
-    public Action OnExitSlowZone;
+    public Action<float> OnExitSlowZone;
+
+    public Action<BuffStats> OnPickupBuff;
     
     private void Awake()
     {

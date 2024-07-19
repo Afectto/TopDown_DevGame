@@ -14,6 +14,6 @@
 
     public void Remove()
     {
-        EventManager.Instance.OnExitSlowZone?.Invoke();
+        EventManager.Instance.OnExitSlowZone?.Invoke(_speedReductionMultiplayer);
     }
 }

@@ -7,7 +7,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void Awake()
     {
-        _playerTransform = FindFirstObjectByType<Player>().transform;
+        var player = FindFirstObjectByType<Player>();
+        if (player)
+        {
+            _playerTransform = player.transform;
+        }
     }
 
     void Update()
