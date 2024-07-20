@@ -368,4 +368,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7368677539604230274}
-  baseWeaponStats: {fileID: 11400000, guid: c75b00eaeb63258439c7f924c49e99b2, type: 2}
+  baseWeaponStats: {fileID: 11400000, guid: a52b1b34a3a548e4fa49b36590936402, type: 2}
