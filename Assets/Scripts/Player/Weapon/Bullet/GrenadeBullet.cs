@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GrenadeBullet : Bullet
 {
-    [SerializeField]private float explosionRadius = 5f;
+    [SerializeField]private float explosionRadius = 2f;
     private Vector3 _targetPosition;
 
     public void SetTargetPosition(Vector3 target)
@@ -12,9 +12,9 @@ public class GrenadeBullet : Bullet
 
     public override void Update()
     {
-        if (Vector3.Distance(transform.position, _targetPosition) > 0.1f)
+        if (transform.position != _targetPosition)
         {
-            MoveTowardsTarget(_targetPosition);
+            MoveToTarget(_targetPosition);
         }
         else
         {
@@ -22,8 +22,8 @@ public class GrenadeBullet : Bullet
         }
     }
 
-    void MoveTowardsTarget(Vector3 target)
-    { 
+    void MoveToTarget(Vector3 target)
+    {
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 

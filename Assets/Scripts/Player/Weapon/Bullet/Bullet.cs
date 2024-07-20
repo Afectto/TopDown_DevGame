@@ -38,6 +38,7 @@ public abstract class Bullet : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             EventManager.Instance.OnDamageTaken?.Invoke(other.gameObject, Damage);
+            Destroy(gameObject);
         }
     }
 }

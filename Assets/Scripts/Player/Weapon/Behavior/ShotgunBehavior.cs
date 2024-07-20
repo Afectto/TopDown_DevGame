@@ -20,7 +20,7 @@ public class ShotgunBehavior : AbstractWeaponBehavior
             Quaternion rotation = Quaternion.Euler(0, 0, angle);
 
             Vector2 shotDirection = rotation * dir;
-            var bullet = CreateBullet(rotation, shotDirection);
+            var bullet = CreateBullet(shotDirection);
             bullet.transform.localScale = Vector3.one * 0.75f;
         }
     }

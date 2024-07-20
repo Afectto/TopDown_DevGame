@@ -8,11 +8,13 @@ public class GrenadeLauncherBehavior : AbstractWeaponBehavior
 
     public override void Shoot(Vector3 direction)
     {
-        var bullet = CreateBullet(Quaternion.identity, direction);
+        var bullet = CreateBullet(direction);
         var grenadeBullet = bullet.GetComponent<GrenadeBullet>();
         if (grenadeBullet)
         {
-            grenadeBullet.SetTargetPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            position.z = 0;
+            grenadeBullet.SetTargetPosition(position);
         }
     }
 

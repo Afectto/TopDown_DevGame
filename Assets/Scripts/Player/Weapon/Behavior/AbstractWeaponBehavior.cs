@@ -16,11 +16,13 @@ public class AbstractWeaponBehavior : IWeaponBehavior
     
     public virtual void Shoot(Vector3 direction)
     {
-        CreateBullet(Quaternion.identity, direction);
+        CreateBullet( direction);
     }
 
-    protected GameObject CreateBullet(Quaternion rotation, Vector3 dir)
+    protected GameObject CreateBullet(Vector3 dir)
     {
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         var bulletObject = GameObject.Instantiate(_bulletPrefab, _firePoint.position, rotation);
         bulletObject.SetDamage(_damage);
         bulletObject.SetDirection(dir);
